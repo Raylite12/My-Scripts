@@ -2,7 +2,7 @@
 $outputCsv = "c:\test"
 
 #Create an Excel COM object
-$Excel = New-Object -ComObject $Excel.Application
+$Excel = New-Object -ComObject Excel.Application
 $Excel.Visible = $True      #Make Excel visible (remove or set to $false for background operation)
 
 #Create a new workbook
