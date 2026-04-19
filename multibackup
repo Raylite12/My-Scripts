@@ -58,4 +58,4 @@ function Backup-Folder {
 }
 
 # Run the backup
-Backup-Folder -SourceFolder "C:", "C:" -Recurse
+Backup-Folder -SourceFolder "C:The folder you want backup", "C:The folder you want backup" -Recurse
