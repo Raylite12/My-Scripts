@@ -95,6 +95,22 @@ $sheetGroup.UsedRange.Cells.EntireColumn.AutoFit()
 $workbook.SaveAs($outputTxt)
 
 #Clean up
+<#for ($i = 10; $i -ge 1; $i--) {
+    Write-Host "Time left: $i seconds"
+    Start-Sleep -Seconds 1
+}
+Write-Host "Done!"#>
+function Start-Stop {
+    param(
+        [int]$Seconds
+    )
+
+    Write-Host "Starting timer for $Seconds seconds..."
+    Start-Sleep -Seconds $Seconds
+    Write-Host "Timer finished."
+}
+
+Start-Stop -Seconds 10
 $Excel.Quit()
 [System.Runtime.InteropServices.Marshal]::ReleaseComObject($sheet) | Out-Null
 [System.Runtime.InteropServices.Marshal]::ReleaseComObject($workbook) | Out-Null
