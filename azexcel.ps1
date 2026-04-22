@@ -13,10 +13,10 @@ Get-MgUser | Format-List DisplayName | Out-File -FilePath c: -Append
 
 function commandlr {
     #Define the path to your input file 
-    $inputFile = "\\corp.nsa.gov\NCMD\Home\vol32031\ldraye\Private\Larry\command1.txt"
+    $inputFile = "c:command1.txt"
 
     #Define the path for the output Excel file
-    $outputTxt = "\\corp.nsa.gov\NCMD\Home\vol32031\ldraye\Private\Larry1"
+    $outputTxt = "c:Larry1"
 
     #Get the content of the text file
     $textContext = Get-Content $inputFile 
