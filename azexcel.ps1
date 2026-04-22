@@ -64,31 +64,32 @@ function commandlr {
             $workbook,
             [string[]]$order
         )
-        $sheetCount = $workbook.Sheets.$sheet.Count
+       # $sheetCount = $workbook.Sheets.$sheet.Count
+       $index = 1
         foreach ($name in $order) {
             $sheet = $workbook.Sheets.Item($name)
-            $sheet.Move($null, $sheetCount)
-            $sheetCount--
+            $sheet.Move($workbook.Sheets.Item($index))
+            $index++
         }
         
     }
     #Set the order of the sheets
-    Set-SheetOrder -workbook $workbook -order@("Group", "Users")
+    Set-SheetOrder -Workbook $workbook -Order @("Group", "Users")
 
    #Populate the Excel sheet with data from the text file    
 for ($i = 0; $i -lt $textContext.Length; $i++) {
-    $sheet.cells.Item($i + 2, 1).Value = $textContext[$i]
+    $sheetGroup.cells.Item($i + 2, 1).Value = $textContext[$i]
 
     $columns = $textContext[$i].Split(' ', [StringSplitOptions]::RemoveEmptyEntries)
     for ($j = 0; $j -lt $columns.Length; $j++) {
-        $sheet.cells.item($i + 2, $j + 1).Value = $columns[$j]
+        $sheetGroup.cells.item($i + 2, $j + 1).Value = $columns[$j]
     }
 }
 
 #Autofit and Font Name the columns
-$sheet.UsedRange.Font.Name = "Times New Roman"
-$sheet.UsedRange.Font.Size = 12
-$sheet.UsedRange.Cells.EntireColumn.AutoFit()
+$sheetGroup.UsedRange.Font.Name = "Times New Roman"
+$sheetGroup.UsedRange.Font.Size = 12
+$sheetGroup.UsedRange.Cells.EntireColumn.AutoFit()
 
 #Save the workbook
 $workbook.SaveAs($outputTxt)
