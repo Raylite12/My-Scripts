@@ -4,7 +4,7 @@
 
 Connect-AzAccount -Tenant
 Connect-MgGraph
-Get-MgContext | fl *
+Get-MgContext | format-List *
 Import-Module Microsoft.Graph.Users
 Import-Module Microsoft.Graph.Groups
 
